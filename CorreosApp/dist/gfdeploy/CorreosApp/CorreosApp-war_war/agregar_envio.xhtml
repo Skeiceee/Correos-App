@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Correos App - Agregar envio</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:head>
+                <ui:include src="WEB-INF/templates/header.xhtml"/>
+            </h:head>  
+
+            <section>
+                <p:panel header="Ingresar envio">
+                    <h:panelGrid columns = "1">
+                        <h:outputLabel value = "Nombre ">
+                            <p:inputText value= "#{enviosManagedBean.nom_cliente}"
+                                         required="true"
+                                         requiredMessage="El nombre es requerido"/>
+                        </h:outputLabel>
+
+                        <h:outputLabel value = "Telefono ">
+                            <p:inputNumber value ="#{enviosManagedBean.telefono}"
+                                           required="true"
+                                           requiredMessage="El telefono es requerido"
+                                           decimalPlaces="0"/>                                       
+                        </h:outputLabel>
+
+                        <h:outputLabel value = "Ciudad ">
+                            <p:selectOneMenu value ="#{enviosManagedBean.ciudad}">
+                                <f:selectItem itemLabel="Viña del Mar"
+                                              itemValue="Viña del Mar"/>
+                                <f:selectItem itemLabel="Quilpué"
+                                              itemValue="Quilpué"/>
+                                <f:selectItem itemLabel="Santiago"
+                                              itemValue="Santiago"/>
+                                <f:selectItem itemLabel="Otro que no sea Santiago"
+                                              itemValue="Otro que no sea Santiago"/>                                
+                            </p:selectOneMenu>                            
+                        </h:outputLabel>
+
+
+                        <h:outputLabel value = "Pais de origen  ">
+                            <p:selectOneMenu value ="#{enviosManagedBean.pais_origen}">
+                                <f:selectItem itemLabel="China"
+                                              itemValue="China"/>
+                                <f:selectItem itemLabel="Gringolandia"
+                                              itemValue="Gringolandia"/>
+                                <f:selectItem itemLabel="Otro menos importante"
+                                              itemValue="Otro menos importante"/>    
+                            </p:selectOneMenu>                            
+                        </h:outputLabel>  
+
+                        <h:outputLabel value = "Direccion">
+                            <p:editor id="editor" 
+                                      widgetVar="editorWidget" 
+                                      value="#{enviosManagedBean.direccion}"
+                                      required="true"
+                                      requiredMessage="La direccion es requerida"/>                            
+                        </h:outputLabel>    
+                        <p:commandButton value="Ingresar"
+                                         actionListener="#{enviosManagedBean.agregarEnvio}"/>
+                    </h:panelGrid>              
+                </p:panel>                
+            </section>
+
+        </h:form>
+    </h:body>
+</html>
+
